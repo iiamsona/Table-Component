@@ -1,6 +1,11 @@
 .table_column {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    border-bottom: solid 1px #D6D9DE;
+}
+
+.table_column:last-child {
+    border-bottom: none;
 }
 
 .table_column_item {
@@ -13,4 +18,5 @@
 
 .table_column_checkbox{
     margin-right: 25%;
+    margin-left: 10%;
 }
