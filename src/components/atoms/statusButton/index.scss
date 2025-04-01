@@ -1,20 +1,23 @@
 .status-button {
- display: flex;
- background-color: blueviolet;
- align-items: center;
- position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: #38b75c79;
+  align-items: center;
+  width: 80%;
+  padding: 10%;
+  border-radius: 8px;
 }
-.status-button_text{
-    margin: 0;
-    background-color: chocolate;
+
+.status-button_text {
+  margin: 0;
+  font-weight: 800;
 }
 .status-button_btn {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-    justify-content:right;
-    background-color: transparent;
-    border: none;
-    position:absolute;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
 }

@@ -29,16 +29,24 @@
             </div>
         </div>
         <div class="table_column_item">
-            Terminal
+            <p v-if="prop_terminal === 'Terminal'">Terminal</p>
+            <div v-else>
+                <terminalButton />
+            </div>
         </div>
         <div class="table_column_item">
-            Action
+            <p v-if="prop_action === 'Action'">Action</p>
+            <div v-else>
+                <actionButton />
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
 import statusButton from '../statusButton/StatusButton.vue'
+import terminalButton from '.././terminalButton/TerminalButton.vue'
+import actionButton from '.././actionButton/ActionButton.vue'
 </script>
 
 <script>
@@ -75,6 +83,14 @@ export default {
     prop_status: {
       type: String,
       default: 'Status'
+    },
+    prop_terminal: {
+      type: String,
+      default: 'Terminal'
+    },
+    prop_action: {
+      type: String,
+      default: 'Action'
     }
   }
 }

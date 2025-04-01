@@ -1,8 +1,8 @@
 <template>
-    <div class="status-button">
-        <p class="status-button_text">Active</p>
-        <button class="status-button_btn"><img :src="arrow"></img></button>
-    </div>
+        <div class="status-button">
+            <p class="status-button_text">Active</p>
+            <button class="status-button_btn"><img :src="arrow"></img></button>
+        </div>
 </template>
 
 <style lang="scss" scoped>
