@@ -1,9 +1,16 @@
 .table_column {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+}
+
+.table_column_item {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
-    text-align: center;
-    height: 100%;
-    width: 100%;
-    
+    text-align: start;
+    min-width: 90px ;
+}
+
+.table_column_checkbox{
+    margin-right: 25%;
 }
