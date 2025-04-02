@@ -24,19 +24,19 @@
         </div>
         <div class="table_column_item">
             <p v-if="prop_status === 'Status'">Status</p>
-            <div v-else>
+            <div v-else  class="table_column_item">
                 <statusButton/>
             </div>
         </div>
         <div class="table_column_item">
             <p v-if="prop_terminal === 'Terminal'">Terminal</p>
-            <div v-else>
+            <div v-else class="table_column_item">
                 <terminalButton />
             </div>
         </div>
         <div class="table_column_item">
             <p v-if="prop_action === 'Action'">Action</p>
-            <div v-else>
+            <div v-else class="table_column_item">
                 <actionButton />
             </div>
         </div>

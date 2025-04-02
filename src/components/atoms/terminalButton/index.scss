@@ -1,6 +1,31 @@
+template{
+    width: 100%;
+    height: 100%; 
+}
+.terminal-button-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: start;
+    align-items: center;
+}
+
 .terminal-button {
-    background-color: #4caf4fa1;
+    background-color: #69D086;
     border: none;
     border-radius: 5000px;
-    padding: 40% 80%;
+    width: 22%;
+    height: 20%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 3% 2.5%;
+}
+
+.round-btn {
+    border-radius: 50%;
+    width: 40%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
 }
