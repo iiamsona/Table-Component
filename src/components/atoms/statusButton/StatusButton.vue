@@ -1,14 +1,14 @@
 <template>
   <div class="status-button-container">
-    <div v-if = "!status" class="status-button-inactive">
+    <div v-if = "status == false" class="status-button-inactive">
       <p class="status-button_text-inactive">Inactive</p>
       <button @click=openStatus() class="status-button_btn"><img :src="arrow"></img></button>
     </div>
-    <div v-else class="status-button-active">
+    <div v-else-if="status == true" class="status-button-active">
       <p class="status-button_text-active">Active</p>
       <button @click=openStatus() class="status-button_btn"><img :src="arrow"></img></button>
     </div>
-    <div v-if="open" class="change-status-container">
+    <div v-if="open == true" class="change-status-container">
       <p :class="status ? 'change-status-selected' : 'change-status'" @click=changeActiveStatus()>Active</p>
       <p :class="status ? 'change-status' : 'change-status-selected'" @click=changeInactiveStatus()>Inactive</p>
     </div>
