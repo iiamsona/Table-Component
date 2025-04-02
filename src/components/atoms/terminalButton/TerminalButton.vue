@@ -1,6 +1,6 @@
 <template>
     <div class="terminal-button-container">
-        <button class="terminal-button">klor</button>
+        <div class="terminal-button"><button></button></div>
     </div>
 </template>
 

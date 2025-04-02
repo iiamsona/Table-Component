@@ -1,17 +1,37 @@
-.status-button {
+.status-button-active {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  background-color: #38b75c79;
+  background-color: #38B75C40;
+  align-items: center;
+  width: 80%;
+  padding: 12% 25%;
+  border-radius: 8px;
+}
+
+.status-button-inactive {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: #E5242460;
   align-items: center;
   width: 80%;
   padding: 10%;
   border-radius: 8px;
 }
 
-.status-button_text {
+.status-button_text-active {
   margin: 0;
   font-weight: 800;
+  color:#38B75C;
+  text-align: start;
 }
+
+.status-button_text-inactive {
+  margin: 0;
+  font-weight: 800;
+  color:#E52424;
+}
+
+
 .status-button_btn {
   display: flex;
   padding: 0;
@@ -20,4 +40,5 @@
   justify-content: center;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
