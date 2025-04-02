@@ -11,7 +11,7 @@ template{
     align-items: center;
 }
 
-.terminal-button {
+.terminal-button-end {
     background-color: #69D086;
     border: none;
     border-radius: 5000px;
@@ -19,6 +19,18 @@ template{
     height: 40%;
     display: flex;
     justify-content: end;
+    align-items: center;
+    padding: 0 2%;
+}
+
+.terminal-button-start {
+    background-color: #69D086;
+    border: none;
+    border-radius: 5000px;
+    width: 25%;
+    height: 40%;
+    display: flex;
+    justify-content: start;
     align-items: center;
     padding: 0 2%;
 }
