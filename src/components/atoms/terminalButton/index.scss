@@ -2,6 +2,7 @@ template{
     width: 100%;
     height: 100%; 
 }
+
 .terminal-button-container{
     display: flex;
     width: 100%;
@@ -14,18 +15,18 @@ template{
     background-color: #69D086;
     border: none;
     border-radius: 5000px;
-    width: 22%;
-    height: 20%;
+    width: 15%;
+    height: 40%;
     display: flex;
     justify-content: end;
     align-items: center;
-    padding: 3% 2.5%;
+    padding: 0 2%;
 }
 
 .round-btn {
     border-radius: 50%;
     width: 40%;
-    height: 100%;
+    height: 70%;
     border: none;
     cursor: pointer;
 }

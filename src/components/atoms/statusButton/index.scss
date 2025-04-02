@@ -1,10 +1,19 @@
+p{
+  margin: 0;
+}
+.status-button-container{
+  width: 40%;
+  position: relative;
+}
 .status-button-active {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   background-color: #38B75C40;
   align-items: center;
-  width: 80%;
-  padding: 12% 25%;
+  justify-content: space-between;
+  width: 55%;
+  padding: 10%;
+  padding-right: 35%;
   border-radius: 8px;
 }
 
@@ -13,9 +22,10 @@
   grid-template-columns: repeat(2, 1fr);
   background-color: #E5242460;
   align-items: center;
-  width: 80%;
+  width: 83%;
   padding: 10%;
   border-radius: 8px;
+  
 }
 
 .status-button_text-active {
@@ -42,3 +52,23 @@
   border: none;
   cursor: pointer;
 }
+
+.change-status-container{
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.12);
+  position: absolute;
+  width: 100%;
+  padding-left: 5%;
+  background-color: white;
+  z-index: 1;
+}
+
+.change-status{
+  cursor: pointer;
+  width: 60%;
+}
+
+.change-status-selected {
+ color: grey;
+}
+
