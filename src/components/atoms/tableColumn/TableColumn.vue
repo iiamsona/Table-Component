@@ -43,7 +43,13 @@ export default {
   },
   computed: {
     columnCount() {
-      return Object.keys(this.$props).length;
+        const activeProps = [];
+          for (const key in props) {
+                if (this.$props.key != this.$props.key.default){
+                  activeProps.push(this.$props.key);
+                }
+          }
+      return activeProps.length;
     },
   },
 };
@@ -78,6 +84,39 @@ export default {
     </div>
     <div v-if="prop_owner" class="table_column_item">
       <p>{{ prop_owner }}</p>
+    </div>
+    <div v-if="prop_room_max_count" class="table_column_item">
+      <p>{{ prop_room_max_count }}</p>
+    </div>
+    <div v-if="prop_group_max_count" class="table_column_item">
+      <p>{{ prop_group_max_count }}</p>
+    </div>
+    <div v-if="prop_responsible_max_count" class="table_column_item">
+      <p>{{ prop_responsible_max_count }}</p>
+    </div>
+    <div v-if="prop_office_max_count" class="table_column_item">
+      <p>{{ prop_office_max_count }}</p>
+    </div>
+    <div v-if="prop_day_sum" class="table_column_item">
+      <p>{{ prop_day_sum }}</p>
+    </div>
+    <div v-if="prop_total_sum" class="table_column_item">
+      <p>{{ prop_total_sum }}</p>
+    </div>
+    <div v-if="prop_deleted_at" class="table_column_item">
+      <p>{{ prop_deleted_at }}</p>
+    </div>
+    <div v-if="prop_created_at" class="table_column_item">
+      <p>{{ prop_created_at }}</p>
+    </div>
+    <div v-if="prop_updated_at" class="table_column_item">
+      <p>{{ prop_updated_at }}</p>
+    </div>
+    <div v-if="prop_isDefault" class="table_column_item">
+      <p>{{ prop_isDefault }}</p>
+    </div>
+    <div v-if="prop_employees" class="table_column_item">
+      <p>{{ prop_employees }}</p>
     </div>
     <div class="table_column_item">
       <p>{{ prop_org }}</p>
