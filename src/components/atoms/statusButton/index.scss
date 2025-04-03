@@ -2,6 +2,8 @@ p{
   margin: 0;
 }
 .status-button-container{
+  min-width: 75px;
+  min-height: 35px;
   width: 50%;
   position: relative;
 }
@@ -33,12 +35,14 @@ p{
   font-weight: 800;
   color:#38B75C;
   text-align: start;
+  font-size: 70%;
 }
 
 .status-button_text-inactive {
   margin: 0;
   font-weight: 800;
   color:#E52424;
+  font-size: 70%;
 }
 
 

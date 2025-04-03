@@ -21,6 +21,9 @@ template{
     justify-content: end;
     align-items: center;
     padding: 0 2%;
+    min-width: 36px;
+    min-height: 20px;
+    max-height: 25px;
 }
 
 .terminal-button-start {
@@ -41,4 +44,6 @@ template{
     height: 60%;
     border: none;
     cursor: pointer;
+    min-width: 14px;
+    min-height: 14px;
 }
