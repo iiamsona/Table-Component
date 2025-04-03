@@ -70,8 +70,25 @@
                         "pivot": {
                             "organization_id": 1,
                             "user_id": 52
-                        }
-                    }
+                        },
+                    },
+                    {
+                        "id": 52,
+                        "name": "Sona",
+                        "email": "anna.melqonyan@gmil.com",
+                        "organization_id": 1,
+                        "email_verified_at": null,
+                        "auction_user_id": null,
+                        "deleted_at": null,
+                        "created_at": "2025-02-05T12:42:44.000000Z",
+                        "updated_at": "2025-03-24T12:23:05.000000Z",
+                        "rf_id_code": null,
+                        "pivot": {
+                            "organization_id": 1,
+                            "user_id": 52
+                        },
+                    },
+
                 ]
             }
         ]
