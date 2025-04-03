@@ -4,7 +4,9 @@
     height: 100%;
     align-items: center;
     justify-content: center;
-    padding: 1%;
     border-radius: 16px;
     border: solid 1px #D6D9DE;
+}
+.main_table:hover {
+    overflow-x: scroll;
 }

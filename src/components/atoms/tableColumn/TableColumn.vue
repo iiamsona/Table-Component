@@ -25,6 +25,7 @@ export default {
     prop_status: { type: String, default: "Status" },
     prop_terminal: { type: String, default: "Terminal" },
     prop_action: { type: String, default: "Action" },
+    
   },
   computed: {
     columnCount() {
@@ -37,7 +38,7 @@ export default {
 <template>
   <div
     class="table_column"
-    :style="{ gridTemplateColumns: `repeat(${columnCount}, 1fr)` }"
+    :style="{ gridTemplateColumns: `repeat(${columnCount}, minmax(150px, 1fr))` }"
   >
     <div class="table_column_item">
       <input type="checkbox" v-if="prop_checkbox" class="table_column_checkbox" />
@@ -63,22 +64,17 @@ export default {
     </div>
     <div class="table_column_item">
       <p v-if="prop_status === 'Status'">Status</p>
-      <div v-else class="table_column_item">
-        <statusButton />
-      </div>
+      <statusButton v-else />
     </div>
     <div class="table_column_item">
       <p v-if="prop_terminal === 'Terminal'">Terminal</p>
-      <div v-else class="table_column_item">
-        <terminalButton />
-      </div>
+        <terminalButton v-else />
     </div>
     <div class="table_column_item">
       <p v-if="prop_action === 'Action'">Action</p>
-      <div v-else class="table_column_item">
-        <actionButton />
-      </div>
+        <actionButton v-else />
     </div>
+
   </div>
 </template>
 

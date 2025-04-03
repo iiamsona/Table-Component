@@ -6,6 +6,7 @@ p{
   min-height: 35px;
   width: 50%;
   position: relative;
+  z-index: 1;
 }
 .status-button-active {
   display: grid;
@@ -27,7 +28,6 @@ p{
   width: 83%;
   padding: 10%;
   border-radius: 8px;
-  
 }
 
 .status-button_text-active {
@@ -64,7 +64,8 @@ p{
   width: 100%;
   padding-left: 5%;
   background-color: white;
-  z-index: 1;
+  position:absolute;
+  z-index:2;
 }
 
 .change-status{
