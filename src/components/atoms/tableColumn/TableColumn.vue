@@ -14,6 +14,7 @@ const countColumns = () => {
 <script>
 export default {
   props: {
+    prop_checkbox: { type: Boolean, default: false },
     prop_ID: { type: String, default: "ID" },
     prop_name: { type: String, default: "Name" },
     prop_address: { type: String, default: "Address" },
@@ -39,7 +40,7 @@ export default {
     :style="{ gridTemplateColumns: `repeat(${columnCount}, 1fr)` }"
   >
     <div class="table_column_item">
-      <input type="checkbox" class="table_column_checkbox" />
+      <input type="checkbox" v-if="prop_checkbox" class="table_column_checkbox" />
       <p>{{ prop_ID }}</p>
     </div>
     <div class="table_column_item">
