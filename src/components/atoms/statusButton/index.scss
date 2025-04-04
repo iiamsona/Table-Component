@@ -6,7 +6,6 @@ p{
   min-height: 35px;
   width: 50%;
   position: relative;
-  z-index: 1;
 }
 .status-button-active {
   display: grid;
@@ -20,6 +19,7 @@ p{
   border-radius: 8px;
 }
 
+
 .status-button-inactive {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -28,7 +28,9 @@ p{
   width: 83%;
   padding: 10%;
   border-radius: 8px;
+ 
 }
+
 
 .status-button_text-active {
   margin: 0;
@@ -38,12 +40,15 @@ p{
   font-size: 70%;
 }
 
+
 .status-button_text-inactive {
   margin: 0;
   font-weight: 800;
   color:#E52424;
   font-size: 70%;
 }
+
+
 
 
 .status-button_btn {
@@ -57,6 +62,7 @@ p{
   cursor: pointer;
 }
 
+
 .change-status-container{
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.12);
@@ -64,16 +70,20 @@ p{
   width: 100%;
   padding-left: 5%;
   background-color: white;
-  position:absolute;
-  z-index:2;
+  z-index: 1;
 }
+
 
 .change-status{
   cursor: pointer;
   width: 60%;
 }
 
+
 .change-status-selected {
  color: grey;
 }
+
+
+
 
