@@ -1,16 +1,17 @@
-p{
+p {
   margin: 0;
 }
-.status-button-container{
+.status-button-container {
   min-width: 75px;
   min-height: 35px;
   width: 50%;
   position: relative;
+   
 }
 .status-button-active {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  background-color: #38B75C40;
+  background-color: #38b75c40;
   align-items: center;
   justify-content: space-between;
   width: 55%;
@@ -19,37 +20,30 @@ p{
   border-radius: 8px;
 }
 
-
 .status-button-inactive {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  background-color: #E5242460;
+  background-color: #e5242460;
   align-items: center;
   width: 83%;
   padding: 10%;
   border-radius: 8px;
- 
 }
-
 
 .status-button_text-active {
   margin: 0;
   font-weight: 800;
-  color:#38B75C;
+  color: #38b75c;
   text-align: start;
   font-size: 70%;
 }
 
-
 .status-button_text-inactive {
   margin: 0;
   font-weight: 800;
-  color:#E52424;
+  color: #e52424;
   font-size: 70%;
 }
-
-
-
 
 .status-button_btn {
   display: flex;
@@ -62,28 +56,21 @@ p{
   cursor: pointer;
 }
 
-
-.change-status-container{
+.change-status-container {
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.12);
-  position: absolute;
   width: 100%;
   padding-left: 5%;
   background-color: white;
+  position: absolute;
   z-index: 1;
 }
 
-
-.change-status{
+.change-status {
   cursor: pointer;
   width: 60%;
 }
 
-
 .change-status-selected {
- color: grey;
+  color: grey;
 }
-
-
-
-
