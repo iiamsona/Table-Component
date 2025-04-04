@@ -1,11 +1,17 @@
 <script setup>
+import { computed } from "vue";
 import TableColumn from "../tableColumn/TableColumn.vue";
 import { dataArray } from "../../../data/index.js";
+import { columnsArray } from '../../../data/index.js';
+
+const visibleColumns = computed(() => {
+  return columnsArray.filter(column => column.visible);
+});
 </script>
 
 <template>
-  <div class="main_table">
-    <TableColumn :data="{}" :showCheckbox="true" />
+<div class="main_table" :style="{ minWidth: `${visibleColumns.length * 150}px` }">
+  <TableColumn :data="{}" :showCheckbox="true" />
     <TableColumn v-for="data in dataArray" :key="data.id" :data="data" :showCheckbox="true" />
   </div>
 </template>
