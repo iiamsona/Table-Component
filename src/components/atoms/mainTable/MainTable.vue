@@ -1,26 +1,14 @@
-<template>
-  <div class="main_table">
-    <TableColumn :prop_checkbox="true" />
-    <TableColumn
-      v-for="data in dataArray"
-      :prop_checkbox="true"
-      :prop_ID="data.id"
-      :prop_name="data.name"
-      :prop_address="data.address"
-      :prop_phone="data.phone"
-      :prop_email="data.email"
-      prop_status="ok"
-      prop_terminal="ok"
-      prop_action="ok"
-      prop_deleted_at="ok"
-    />
-  </div>
-</template>
-
 <script setup>
 import TableColumn from "../tableColumn/TableColumn.vue";
 import { dataArray } from "../../../data/index.js";
 </script>
+
+<template>
+  <div class="main_table">
+    <TableColumn :data="{}" :showCheckbox="true" />
+    <TableColumn v-for="data in dataArray" :key="data.id" :data="data" :showCheckbox="true" />
+  </div>
+</template>
 
 <style lang="scss" scoped>
 @import "./index.scss";
