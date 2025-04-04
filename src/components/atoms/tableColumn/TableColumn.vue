@@ -1,58 +1,64 @@
 <script setup>
-import { ref } from "vue";
+import { computed } from "vue";
 import statusButton from "../statusButton/StatusButton.vue";
 import terminalButton from "../terminalButton/TerminalButton.vue";
 import actionButton from "../actionButton/ActionButton.vue";
 
-const columnCount = ref(10);
+const props = defineProps({
+  prop_checkbox: { type: Boolean, default: false },
+  prop_ID: { type: String, default: "ID" },
+  prop_name: { type: String, default: "Name" },
+  prop_address: { type: String, default: "Address" },
+  prop_phone: { type: String, default: "Phone" },
+  prop_email: { type: String, default: "Email" },
+  prop_owner: { type: String, default: "Owner" },
+  prop_room_max_count: { type: String, default: "Room Max Count" },
+  prop_group_max_count: { type: String, default: "Group Max Count" },
+  prop_responsible_max_count: { type: String, default: "Responsible Max Count" },
+  prop_office_max_count: { type: String, default: "Office Max Count" },
+  prop_day_sum: { type: String, default: "Day sum" },
+  prop_total_sum: { type: String, default: "Total sum" },
+  prop_deleted_at: { type: String, default: "Deleted at" },
+  prop_created_at: { type: String, default: "Created at" },
+  prop_updated_at: { type: String, default: "Updated at" },
+  prop_isDefault: { type: String, default: "Is Default" },
+  prop_employees: { type: Array, default: () => [] },
+  prop_status: { type: String, default: "Status" },
+  prop_terminal: { type: String, default: "Terminal" },
+  prop_action: { type: String, default: "Action" }
+});
 
-const countColumns = () => {
-  alert(columnCount.value);
+const defaultValues = {
+  prop_checkbox: false,
+  prop_ID: "ID",
+  prop_name: "Name",
+  prop_address: "Address",
+  prop_phone: "Phone",
+  prop_email: "Email",
+  prop_owner: "Owner",
+  prop_room_max_count: "Room Max Count",
+  prop_group_max_count: "Group Max Count",
+  prop_responsible_max_count: "Responsible Max Count",
+  prop_office_max_count: "Office Max Count",
+  prop_day_sum: "Day sum",
+  prop_total_sum: "Total sum",
+  prop_deleted_at: "Deleted at",
+  prop_created_at: "Created at",
+  prop_updated_at: "Updated at",
+  prop_isDefault: "Is Default",
+  prop_employees: [],
+  prop_status: "Status",
+  prop_terminal: "Terminal",
+  prop_action: "Action"
 };
-</script>
 
-<script>
-export default {
-  props: {
-    prop_checkbox: { type: Boolean, default: false },
-    prop_ID: { type: String, default: "ID" },
-    prop_name: { type: String, default: "Name" },
-    prop_address: { type: String, default: "Address" },
-    prop_phone: { type: String, default: "Phone" },
-    prop_email: { type: String, default: "Email" },
-    prop_owner: { type: String, default: "Owner" },
-    prop_room_max_count: { type: String, default: "Room Max Count" },
-    prop_group_max_count: { type: String, default: "Group Max Count" },
-    prop_responsible_max_count: {
-      type: String,
-      default: "Responsible Max Count",
-    },
-    prop_office_max_count: { type: String, default: "Office Max Count" },
-    prop_day_sum: { type: String, default: "Day sum" },
-    prop_total_sum: { type: String, default: "Total sum" },
-    prop_deleted_at: { type: String, default: "Deleted at" },
-    prop_created_at: { type: String, default: "Created at" },
-    prop_updated_at: { type: String, default: "Updated at" },
-    prop_isDefault: { type: String, default: "Is Default" },
-    prop_employees: { type: Array, default: "Employees" },
-    prop_website: { type: String, default: "Website" },
-    prop_org: { type: String, default: "Organiz. type" },
-    prop_status: { type: String, default: "Status" },
-    prop_terminal: { type: String, default: "Terminal" },
-    prop_action: { type: String, default: "Action" },
-  },
-  computed: {
-    columnCount() {
-        const activeProps = [];
-          for (const key in props) {
-                if (this.$props.key != this.$props.key.default){
-                  activeProps.push(this.$props.key);
-                }
-          }
-      return activeProps.length;
-    },
-  },
-};
+const filteredProps = computed(() => {
+  return Object.entries(props)
+    .filter(([key, value]) => JSON.stringify(value) !== JSON.stringify(defaultValues[key]))
+    .map(([key]) => key);
+});
+
+const columnCount = computed(() => filteredProps.value.length);
 </script>
 
 <template>
@@ -62,77 +68,26 @@ export default {
       gridTemplateColumns: `repeat(${columnCount}, minmax(150px, 1fr))`,
     }"
   >
-    <div v-if="prop_ID" class="table_column_item">
-      <input
-        type="checkbox"
-        v-if="prop_checkbox"
-        class="table_column_checkbox"
-      />
-      <p>{{ prop_ID }}</p>
+    <div v-for="prop in filteredProps" :key="prop" class="table_column_item">
+      <template v-if="prop === 'prop_checkbox'">
+        <input type="checkbox" class="table_column_checkbox" />
+      </template>
+      <template v-else-if="prop === 'prop_status'">
+        <statusButton />
+      </template>
+      <template v-else-if="prop === 'prop_terminal'">
+        <terminalButton />
+      </template>
+      <template v-else-if="prop === 'prop_action'">
+        <actionButton />
+      </template>
+      <template v-else>
+        <p>{{ props[prop] }}</p>
+      </template>
     </div>
-    <div v-if="prop_name" class="table_column_item">
-      <p>{{ prop_name }}</p>
-    </div>
-    <div v-if="prop_address" class="table_column_item">
-      <p>{{ prop_address }}</p>
-    </div>
-    <div v-if="prop_phone" class="table_column_item">
-      <p>{{ prop_phone }}</p>
-    </div>
-    <div v-if="prop_email" class="table_column_item">
-      <p>{{ prop_email }}</p>
-    </div>
-    <div v-if="prop_owner" class="table_column_item">
-      <p>{{ prop_owner }}</p>
-    </div>
-    <div v-if="prop_room_max_count" class="table_column_item">
-      <p>{{ prop_room_max_count }}</p>
-    </div>
-    <div v-if="prop_group_max_count" class="table_column_item">
-      <p>{{ prop_group_max_count }}</p>
-    </div>
-    <div v-if="prop_responsible_max_count" class="table_column_item">
-      <p>{{ prop_responsible_max_count }}</p>
-    </div>
-    <div v-if="prop_office_max_count" class="table_column_item">
-      <p>{{ prop_office_max_count }}</p>
-    </div>
-    <div v-if="prop_day_sum" class="table_column_item">
-      <p>{{ prop_day_sum }}</p>
-    </div>
-    <div v-if="prop_total_sum" class="table_column_item">
-      <p>{{ prop_total_sum }}</p>
-    </div>
-    <div v-if="prop_deleted_at" class="table_column_item">
-      <p>{{ prop_deleted_at }}</p>
-    </div>
-    <div v-if="prop_created_at" class="table_column_item">
-      <p>{{ prop_created_at }}</p>
-    </div>
-    <div v-if="prop_updated_at" class="table_column_item">
-      <p>{{ prop_updated_at }}</p>
-    </div>
-    <div v-if="prop_isDefault" class="table_column_item">
-      <p>{{ prop_isDefault }}</p>
-    </div>
-    <div v-if="prop_employees" class="table_column_item">
-      <p>{{ prop_employees }}</p>
-    </div>
-    <div class="table_column_item">
-      <p>{{ prop_org }}</p>
-    </div>
-    <div class="table_column_item">
-      <p v-if="prop_status === 'Status'">Status</p>
-      <statusButton v-else />
-    </div>
-    <div class="table_column_item">
-      <p v-if="prop_terminal === 'Terminal'">Terminal</p>
-      <terminalButton v-else />
-    </div>
-    <div class="table_column_item">
-      <p v-if="prop_action === 'Action'">Action</p>
-      <actionButton v-else />
-    </div>
+  </div>
+  <div>
+    {{ filteredProps }}
   </div>
 </template>
 
