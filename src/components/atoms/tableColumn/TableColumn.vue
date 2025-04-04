@@ -16,10 +16,33 @@ const visibleColumns = computed(() => {
 });
 
 const timeConvert = (date) => {
-  return date ? moment(date).format("MMMM Do YYYY, h:mm:ss a") : "Invalid Date";
+  return date ? moment(date).format("LL, H:mm") : "Invalid Date";
 };
 
 defineExpose({ timeConvert });
+
+const ifDate = (key) => {
+  if (key === "deleted_at" || key === "created_at") {
+    return timeConvert(props.data[key]);
+  }
+  return props.data[key];
+};
+
+const ifArray = (key) => {
+  if (key === "employees") {
+    const value = props.data[key];
+
+    if (Array.isArray(value)) {
+      return value.map((item) => item.name || item).join(", ");
+    }
+
+    if (typeof value === "object" && value !== null) {
+      return value.name || JSON.stringify(value);
+    }
+  }
+
+  return null;
+};
 
 </script>
 
@@ -48,9 +71,7 @@ defineExpose({ timeConvert });
         <actionButton />
       </template>
       <template v-else>
-        <button @click="console.log(column.label)"></button>
-        <!-- if column.label is a date display (timeConvert(props.data[column.key])) -->
-        <p>{{ props.data[column.key] || column.label }}</p>
+        <p>{{ ifArray(column.key) ?? ifDate(column.key) ?? props.data[column.key] ?? column.label }}</p>
       </template>
     </div>
   </div>
