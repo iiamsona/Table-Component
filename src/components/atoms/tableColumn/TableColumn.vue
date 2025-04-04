@@ -3,7 +3,8 @@ import { computed } from "vue";
 import statusButton from "../statusButton/StatusButton.vue";
 import terminalButton from "../terminalButton/TerminalButton.vue";
 import actionButton from "../actionButton/ActionButton.vue";
-import { columnsArray } from '../../../data/index.js';
+import { columnsArray } from "../../../data/index.js";
+import moment from 'moment'
 
 const props = defineProps({
   data: { type: Object, required: true },
@@ -11,15 +12,29 @@ const props = defineProps({
 });
 
 const visibleColumns = computed(() => {
-  return columnsArray.filter(column => column.visible);
+  return columnsArray.filter((column) => column.visible);
 });
+
+const timeConvert = (date) => {
+  return date ? moment(date).format("MMMM Do YYYY, h:mm:ss a") : "Invalid Date";
+};
+
+defineExpose({ timeConvert });
+
 </script>
 
 <template>
-  <div class="table_column" :style="{
+  <div
+    class="table_column"
+    :style="{
       gridTemplateColumns: `repeat(${visibleColumns.length}, minmax(150px, 1fr))`,
-    }">
-    <div v-for="column in visibleColumns" :key="column.key" class="table_column_item">
+    }"
+  >
+    <div
+      v-for="column in visibleColumns"
+      :key="column.key"
+      class="table_column_item"
+    >
       <template v-if="column.key === 'checkbox'">
         <input type="checkbox" class="table_column_checkbox" />
       </template>
@@ -33,6 +48,8 @@ const visibleColumns = computed(() => {
         <actionButton />
       </template>
       <template v-else>
+        <button @click="console.log(column.label)"></button>
+        <!-- if column.label is a date display (timeConvert(props.data[column.key])) -->
         <p>{{ props.data[column.key] || column.label }}</p>
       </template>
     </div>

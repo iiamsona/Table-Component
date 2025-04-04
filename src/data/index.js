@@ -167,13 +167,13 @@ export const columnsArray = [
     key: "deleted_at",
     label: "Deleted at",
     sortable: false,
-    visible: false,
+    visible: true,
   },
   {
     key: "created_at",
     label: "Created at",
     sortable: false,
-    visible: false,
+    visible: true,
   },
   {
     key: "updated_at",
