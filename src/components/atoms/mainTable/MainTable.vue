@@ -10,7 +10,7 @@ const visibleColumns = computed(() => {
 </script>
 
 <template>
-<div class="main_table" :style="{ minWidth: `${visibleColumns.length * 150}px` }">
+<div class="main_table" :style="{ minWidth: `${visibleColumns.length * 90}px` }">
   <TableColumn :data="{}" :showCheckbox="true" />
     <TableColumn v-for="data in dataArray" :key="data.id" :data="data" :showCheckbox="true" />
   </div>

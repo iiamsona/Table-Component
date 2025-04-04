@@ -116,6 +116,18 @@ export const columnsArray = [
     visible: true,
   },
   {
+    key: "status",
+    label: "Status",
+    sortable: false,
+    visible: true,
+  },
+  {
+    key: "terminal",
+    label: "Terminal",
+    sortable: false,
+    visible: false,
+  },
+  {
     key: "room_max_count",
     label: "Room Max Count",
     sortable: false,
@@ -182,21 +194,9 @@ export const columnsArray = [
     visible: false,
   },
   {
-    key: "status",
-    label: "Status",
-    sortable: false,
-    visible: false,
-  },
-  {
-    key: "terminal",
-    label: "Terminal",
-    sortable: false,
-    visible: false,
-  },
-  {
     key: "action",
     label: "Action",
     sortable: false,
-    visible: false,
+    visible: true,
   },
 ];
