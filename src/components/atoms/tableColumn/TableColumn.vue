@@ -21,11 +21,14 @@ const timeConvert = (date) => {
 
 defineExpose({ timeConvert });
 
-const ifDate = (key) => {
-  if (key === "deleted_at" || key === "created_at") {
-    return timeConvert(props.data[key]);
+const ifDate = (column) => {
+  if (column.key === "deleted_at" || column.key === "created_at") {
+    if (props.data[column.key] === undefined) {
+      return column.label
+    }
+    return timeConvert(props.data[column.key]);
   }
-  return props.data[key];
+  return props.data[column];
 };
 
 const ifArray = (key) => {
@@ -71,7 +74,7 @@ const ifArray = (key) => {
         <actionButton />
       </template>
       <template v-else>
-        <p>{{ ifArray(column.key) ?? ifDate(column.key) ?? props.data[column.key] ?? column.label }}</p>
+        <p>{{ ifArray(column.key) ?? ifDate(column) ?? props.data[column.key] ?? column.label }}</p>
       </template>
     </div>
   </div>
