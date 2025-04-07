@@ -4,10 +4,11 @@
 .customize-button-btn{
     display: flex;
     border-radius: 80px;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border: 1px solid #d1d5db;
     margin: 0.5%;
+    padding: 0 1%;
 }
 
 .customize-button img {

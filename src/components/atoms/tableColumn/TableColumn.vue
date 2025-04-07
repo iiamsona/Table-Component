@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import statusButton from "../statusButton/StatusButton.vue";
 import terminalButton from "../terminalButton/TerminalButton.vue";
 import actionButton from "../actionButton/ActionButton.vue";
@@ -11,9 +11,19 @@ const props = defineProps({
   showCheckbox: { type: Boolean, default: false },
 });
 
+const savedVisibility = JSON.parse(localStorage.getItem("columnVisibility") || "{}");
+
+columnsArray.forEach((col) => {
+  if (savedVisibility.hasOwnProperty(col.key)) {
+    col.visible = savedVisibility[col.key];
+  }
+});
+
 const visibleColumns = computed(() => {
+  console.log('did')
   return columnsArray.filter((column) => column.visible);
 });
+
 
 const timeConvert = (date) => {
   return date ? moment(date).format("LL, H:mm") : "Invalid Date";
