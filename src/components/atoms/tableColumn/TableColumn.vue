@@ -3,25 +3,16 @@ import { ref, computed, onMounted } from "vue";
 import statusButton from "../statusButton/StatusButton.vue";
 import terminalButton from "../terminalButton/TerminalButton.vue";
 import actionButton from "../actionButton/ActionButton.vue";
-import { columnsArray } from "../../../data/index.js";
 import moment from 'moment'
 
 const props = defineProps({
   data: { type: Object, required: true },
   showCheckbox: { type: Boolean, default: false },
 });
-
-const savedVisibility = JSON.parse(localStorage.getItem("columnVisibility") || "{}");
-
-columnsArray.forEach((col) => {
-  if (savedVisibility.hasOwnProperty(col.key)) {
-    col.visible = savedVisibility[col.key];
-  }
-});
-
+  
 const visibleColumns = computed(() => {
-  console.log('did')
-  return columnsArray.filter((column) => column.visible);
+  const saved = JSON.parse(localStorage.getItem("columnVisibility") || "[]");
+  return saved.filter((column) => column.visible);
 });
 
 
@@ -70,6 +61,7 @@ const ifArray = (key) => {
       v-for="column in visibleColumns"
       :key="column.key"
       class="table_column_item"
+      
     >
       <template v-if="column.key === 'checkbox'">
         <input type="checkbox" class="table_column_checkbox" />

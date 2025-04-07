@@ -28,24 +28,10 @@
   const open = ref(false);
   
   const saveVisibility = () => {
-    const visibilityMap = columnsArray.reduce((acc, col) => {
-      acc[col.key] = col.visible;
-      return acc;
-    }, {});
-    localStorage.setItem('columnVisibility', JSON.stringify(visibilityMap));
-  };
+  localStorage.setItem('columnVisibility', JSON.stringify(columnsArray));
+};
+
   
-  onMounted(() => {
-    const saved = localStorage.getItem('columnVisibility');
-    if (saved) {
-      const visibilityMap = JSON.parse(saved);
-      columnsArray.forEach(col => {
-        if (visibilityMap.hasOwnProperty(col.key)) {
-          col.visible = visibilityMap[col.key];
-        }
-      });
-    }
-  });
   </script>
   
   <style lang="scss" scoped>

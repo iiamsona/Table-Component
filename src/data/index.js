@@ -217,3 +217,5 @@ export const columnsArray = [
     visible: true,
   },
 ];
+
+localStorage.setItem('columnVisibility', JSON.stringify(columnsArray));
