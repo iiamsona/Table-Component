@@ -1,0 +1,36 @@
+.customize-button{
+
+}
+.customize-button-btn{
+    display: flex;
+    border-radius: 80px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #d1d5db;
+    margin: 0.5%;
+}
+
+.customize-button img {
+    width: 16px;
+    height: 16px;
+}
+
+.customize-button-container {
+    overflow-y: scroll;
+    max-height: 200px;
+    max-width: 200px;
+    position: absolute;
+    background-color: #f9fafc;
+    z-index: 99999999999999;
+    border-radius: 16px;
+    margin: 0.5%;
+}
+
+.customize-button-div{
+    display: flex;
+
+}
+
+.customize-button-column{
+    display: flex;
+}
