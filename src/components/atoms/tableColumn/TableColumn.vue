@@ -1,18 +1,31 @@
 <script setup>
-import { computed } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import statusButton from "../statusButton/StatusButton.vue";
 import terminalButton from "../terminalButton/TerminalButton.vue";
 import actionButton from "../actionButton/ActionButton.vue";
-import { columnsArray } from "../../../data/index.js";
 import moment from 'moment'
 
 const props = defineProps({
   data: { type: Object, required: true },
   showCheckbox: { type: Boolean, default: false },
 });
+  
+const visibleColumns = ref([]);
 
-const visibleColumns = computed(() => {
-  return columnsArray.filter((column) => column.visible);
+const updateVisibleColumns = () => {
+  const saved = localStorage.getItem("columnVisibility");
+  if (saved) {
+    visibleColumns.value = JSON.parse(saved).filter(column => column.visible);
+  }
+};
+
+onMounted(() => {
+  updateVisibleColumns();
+  window.addEventListener('storage', updateVisibleColumns);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('storage', updateVisibleColumns);
 });
 
 const timeConvert = (date) => {
@@ -21,11 +34,14 @@ const timeConvert = (date) => {
 
 defineExpose({ timeConvert });
 
-const ifDate = (key) => {
-  if (key === "deleted_at" || key === "created_at") {
-    return timeConvert(props.data[key]);
+const ifDate = (column) => {
+  if (column.key === "deleted_at" || column.key === "created_at") {
+    if (props.data[column.key] === undefined) {
+      return column.label
+    }
+    return timeConvert(props.data[column.key]);
   }
-  return props.data[key];
+  return props.data[column];
 };
 
 const ifArray = (key) => {
@@ -57,6 +73,7 @@ const ifArray = (key) => {
       v-for="column in visibleColumns"
       :key="column.key"
       class="table_column_item"
+      
     >
       <template v-if="column.key === 'checkbox'">
         <input type="checkbox" class="table_column_checkbox" />
@@ -71,7 +88,7 @@ const ifArray = (key) => {
         <actionButton />
       </template>
       <template v-else>
-        <p>{{ ifArray(column.key) ?? ifDate(column.key) ?? props.data[column.key] ?? column.label }}</p>
+        <p>{{ ifArray(column.key) ?? ifDate(column) ?? props.data[column.key] ?? column.label }}</p>
       </template>
     </div>
   </div>
