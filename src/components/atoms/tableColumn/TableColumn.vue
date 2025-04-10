@@ -8,7 +8,9 @@ import moment from 'moment'
 const props = defineProps({
   data: { type: Object, required: true },
   showCheckbox: { type: Boolean, default: false },
+  isHeader: { type: Boolean, default: false },
 });
+
   
 const visibleColumns = ref([]);
 
@@ -73,26 +75,34 @@ const ifArray = (key) => {
       v-for="column in visibleColumns"
       :key="column.key"
       class="table_column_item"
-      
     >
-      <template v-if="column.key === 'checkbox'">
+      <template v-if="props.isHeader && column.key != 'checkbox'">
+        <p>{{ column.label }}</p>
+      </template>
+
+      <template v-else-if="column.key === 'checkbox'">
         <input type="checkbox" class="table_column_checkbox" />
       </template>
-      <template v-else-if="column.key === 'status'">
+
+      <template v-else-if="column.key === 'status' && props.data[column.name] != null">
         <statusButton />
       </template>
+
       <template v-else-if="column.key === 'terminal'">
         <terminalButton />
       </template>
+
       <template v-else-if="column.key === 'action'">
         <actionButton />
       </template>
+
       <template v-else>
         <p>{{ ifArray(column.key) ?? ifDate(column) ?? props.data[column.key] ?? column.label }}</p>
       </template>
     </div>
   </div>
 </template>
+
 
 <style lang="scss" scoped>
 @import "./index.scss";

@@ -24,13 +24,14 @@ onUnmounted(() => {
 
 <template>
   <div class="main_table" :style="{ minWidth: `${visibleColumns.length * 90}px` }">
-    <TableColumn :data="{}" :showCheckbox="true" />
-    <TableColumn 
-      v-for="data in dataArray" 
-      :key="data.id" 
-      :data="data" 
-      :showCheckbox="true" 
-    />
+    <TableColumn :data="{}" :showCheckbox="true" :isHeader="true" />
+<TableColumn 
+  v-for="data in dataArray" 
+  :key="data.id" 
+  :data="data" 
+  :showCheckbox="true" 
+/>
+
   </div>
 </template>
 
