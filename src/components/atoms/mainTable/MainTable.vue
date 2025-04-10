@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import TableColumn from "../tableColumn/TableColumn.vue";
+// import TableColumn from "../tableColumn/TableColumn.vue";
+import TableCard from "../tableColumn/TableCard.vue";
 import { dataArray, columnsArray } from "../../../data/index.js";
 
 const visibleColumns = ref([]);
@@ -23,9 +24,15 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="main_table" :style="{ minWidth: `${visibleColumns.length * 90}px` }">
-    <TableColumn :data="{}" :showCheckbox="true" :isHeader="true" />
+  <div class="main_table" :style="{ minWidth: `${visibleColumns.length * 85}px` }">
+    <!-- <TableColumn :data="{}" :showCheckbox="true" :isHeader="true" />
 <TableColumn 
+  v-for="data in dataArray" 
+  :key="data.id" 
+  :data="data" 
+  :showCheckbox="true" 
+/> -->
+<TableCard 
   v-for="data in dataArray" 
   :key="data.id" 
   :data="data" 

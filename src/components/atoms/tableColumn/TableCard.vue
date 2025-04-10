@@ -9,7 +9,6 @@ import sort from '../../../assets/icon_sort.svg'
 const props = defineProps({
   data: { type: Object, required: true },
   showCheckbox: { type: Boolean, default: false },
-  isHeader: { type: Boolean, default: false },
 });
 
   
@@ -66,46 +65,48 @@ const ifArray = (key) => {
 </script>
 
 <template>
-  <div
-    class="table_column"
-    :style="{
-      gridTemplateColumns: `repeat(${visibleColumns.length}, minmax(90px, 1fr))`,
-    }"
-  >
-    <div
-      v-for="column in visibleColumns"
-      :key="column.key"
-      class="table_column_item"
-    >
-      <template v-if="props.isHeader && column.key != 'checkbox'">
-        <p>{{ column.label }}</p>
-        <img :src="sort" alt="">
-      </template>
-
-      <template v-else-if="column.key === 'checkbox'">
-        <input type="checkbox" class="table_column_checkbox" />
-      </template>
-
-      <template v-else-if="column.key === 'status' && props.data[column.name] != null">
-        <statusButton />
-      </template>
-
-      <template v-else-if="column.key === 'terminal'">
-        <terminalButton />
-      </template>
-
-      <template v-else-if="column.key === 'action'">
-        <actionButton />
-      </template>
-
-      <template v-else>
-        <p>{{ ifArray(column.key) ?? ifDate(column) ?? props.data[column.key] ?? column.label }}</p>
-      </template>
+    <div class="card_wrapper">
+    <div class="table_card">
+        <div
+        class="card_item"
+        v-for="column in visibleColumns"
+        :key="column.key"
+        >
+        <div v-if="column.key === 'action'">
+            <actionButton />
+          </div>
+          <div>
+            
+          </div>
+        <template v-if="column.key === 'checkbox'">
+          <div class="card_header">
+            <input type="checkbox" class="table_column_checkbox" />
+        </div>
+    </template>
+    
+        <template v-else>
+          <div class="label">{{ column.label }}</div>
+          <div class="value">
+            <template v-if="column.key === 'status'">
+              <statusButton />
+            </template>
+  
+            <template v-else-if="column.key === 'terminal'">
+              <terminalButton />
+            </template>
+  
+            <template v-else>
+              {{ ifArray(column.key) ?? ifDate(column) ?? props.data[column.key] ?? '—' }}
+            </template>
+          </div>
+        </template>
+      </div>
     </div>
-  </div>
-</template>
+</div>
+  </template>
+  
 
 
 <style lang="scss" scoped>
-@import "./index.scss";
+@import "./card.scss";
 </style>
