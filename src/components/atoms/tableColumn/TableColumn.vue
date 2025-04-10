@@ -35,7 +35,7 @@ const timeConvert = (date) => {
 defineExpose({ timeConvert });
 
 const ifDate = (column) => {
-  if (column.key === "deleted_at" || column.key === "created_at") {
+  if (column.key === "deleted_at" || column.key === "created_at" || column.key === "updated_at") {
     if (props.data[column.key] === undefined) {
       return column.label
     }
@@ -66,7 +66,7 @@ const ifArray = (key) => {
   <div
     class="table_column"
     :style="{
-      gridTemplateColumns: `repeat(${visibleColumns.length}, minmax(150px, 1fr))`,
+      gridTemplateColumns: `repeat(${visibleColumns.length}, minmax(90px, 1fr))`,
     }"
   >
     <div
