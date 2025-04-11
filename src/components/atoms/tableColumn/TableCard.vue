@@ -72,29 +72,29 @@ const ifArray = (key) => {
         v-for="column in visibleColumns"
         :key="column.key"
         >
-        <div v-if="column.key === 'action'">
-            <actionButton />
-          </div>
-          <div>
-            
-          </div>
+        <div>
+          
+        </div>
         <template v-if="column.key === 'checkbox'">
           <div class="card_header">
             <input type="checkbox" class="table_column_checkbox" />
         </div>
-    </template>
-    
-        <template v-else>
-          <div class="label">{{ column.label }}</div>
-          <div class="value">
-            <template v-if="column.key === 'status'">
-              <statusButton />
+      </template>
+      
+      <template v-else>
+        <div class="label">{{ column.label }}</div>
+        <div class="value">
+          <template v-if="column.key === 'status'">
+            <statusButton />
+          </template>
+          
+          <template v-else-if="column.key === 'terminal'">
+            <terminalButton />
+          </template>
+          
+          <template v-if="column.key === 'action'" :styles>
+              <actionButton />
             </template>
-  
-            <template v-else-if="column.key === 'terminal'">
-              <terminalButton />
-            </template>
-  
             <template v-else>
               {{ ifArray(column.key) ?? ifDate(column) ?? props.data[column.key] ?? '—' }}
             </template>
