@@ -5,7 +5,7 @@ import TableCard from "../tableColumn/TableCard.vue";
 import { dataArray, columnsArray } from "../../../data/index.js";
 
 const visibleColumns = ref([]);
-const card = ref(true); // make it reactive
+const card = ref(true); 
 
 const updateVisibleColumns = () => {
   const saved = localStorage.getItem("columnVisibility");
@@ -46,7 +46,7 @@ onUnmounted(() => {
         :showCheckbox="true" 
       />
     </div>
-    <div v-else>
+    <div v-else :style="{ display: 'flex' }">
       <TableCard 
         v-for="data in dataArray" 
         :key="data.id" 
